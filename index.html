@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vending Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Vending Machine</h1>
+        <button onclick="viewcart()">View Cart</button>
+    </header>
+    <div class="vending-machine">
+        <div class="product">
+            <img src="img/bingo.jpg" alt="Bingo Original">
+            <p>Bingo Original Style</p>
+            <p>PRICE: &#8377; 20</p>
+            <p id="quantity-BingoOriginal">Quantity: 10</p>
+            <button onclick="additems('Bingo Original Style',20,'BingoOriginal')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/bingo nachos.jpg" alt="Nachos">
+            <p>Bingo Nachos</p>
+            <p>PRICE: &#8377; 20</p>
+            <p id="quantity-BingoNachos">Quantity: 10</p>
+            <button onclick="additems('Bingo Nachos',20,'BingoNachos')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/ruffeles.jpg" alt="Ruffles">
+            <p>Ruffles Cheddar & Sour Cream</p>
+            <p>PRICE: &#8377; 20</p>
+            <p id="quantity-Ruffles">Quantity: 10</p>
+            <button onclick="additems('Ruffles Cheddar & Sour Cream',20,'Ruffles')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/lays.jpg" alt="Lay's Magic Masala">
+            <p>Lay's Magic Masala</p>
+            <p>PRICE: &#8377; 20</p>
+            <p id="quantity-Lays">Quantity: 10</p>
+            <button onclick="additems('Lay\'s Magic Masala',20,'Lays')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/pringles.jpg" alt="Pringles">
+            <p>Pringles Original</p>
+            <p>PRICE: &#8377; 120</p>
+            <p id="quantity-Pringles">Quantity: 10</p>
+            <button onclick="additems('Pringles Original',120,'Pringles')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/bourbon.jpg" alt="Bourbon">
+            <p>Bourbon Chocolate Biscuits</p>
+            <p>PRICE: &#8377; 10</p>
+            <p id="quantity-Bourbon">Quantity: 10</p>
+            <button onclick="additems('Bourbon Chocolate Biscuits',10,'Bourbon')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/Dark-Fantasy-Choco-Fills-big-700x700.webp" alt="Dark Fantasy">
+            <p>Dark Fantasy Choco Fills</p>
+            <p>PRICE: &#8377; 40</p>
+            <p id="quantity-DarkFantasy">Quantity: 10</p>
+            <button onclick="additems('Dark Fantasy Choco Fills',40,'DarkFantasy')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/hide n seek.jpg" alt="Hide & Seek">
+            <p>Hide & Seek Sandwiches</p>
+            <p>PRICE: &#8377; 35</p>
+            <p id="quantity-Hide&Seek">Quantity: 10</p>
+            <button onclick="additems('Hide & Seek Sandwiches',35,'Hide&Seek')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/oreo.png" alt="Oreo">
+            <p>Oreo Cookies</p>
+            <p>PRICE: &#8377; 30</p>
+            <p id="quantity-Oreo">Quantity: 10</p>
+            <button onclick="additems('Oreo Cookies',30,'Oreo')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/kitkat.jpg" alt="KitKat">
+            <p>KitKat Chocolate</p>
+            <p>PRICE: &#8377; 10</p>
+            <p id="quantity-KitKat">Quantity: 10</p>
+            <button onclick="additems('KitKat Chocolate',10,'KitKat')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/feastables.jpg" alt="Feastables">
+            <p>MR Beast's Feastables</p>
+            <p>PRICE: &#8377; 499</p>
+            <p id="quantity-Feastables">Quantity: 10</p>
+            <button onclick="additems('MR Beast\'s Feastables',499,'Feastables')">Add to
+                Cart</button>
+        </div>
+        <div class="product">
+            <img src="img/snickers.jpg" alt="Snickers">
+            <p>Snickers</p>
+            <p>PRICE: &#8377; 20</p>
+            <p id="quantity-Snickers">Quantity: 10</p>
+            <button onclick="additems('Snickers',20,'Snickers')">Add to Cart</button>
+        </div>
+    </div>
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="cartItems"></ul>
+            <p id="totalPrice"></p>
+            <p id="discount"></p>
+            <div class="coupon-section">
+                <input type="text" id="couponCode" placeholder="Enter Coupon Code">
+                <button onclick="viewcart()">Apply Coupon</button>
+            </div>
+
+            <div class="payment-section">
+                <h3>Choose Payment Method</h3>
+                <button onclick="selectPaymentMethod('UPI')">Pay with UPI</button>
+                <button onclick="selectPaymentMethod('Credit/Debit Card')">Pay with Card</button>
+            </div>
+            <div id="upiSection" class="payment-details-section" style="display: none;">
+                <label for="upiId">Enter UPI ID:</label>
+                <input type="text" id="upiId" placeholder="example@upi">
+            </div>
+            <div id="cardSection" class="payment-details-section" style="display: none;">
+                <label for="cardInsert">Insert your Card:</label>
+            </div>
+            <div class="checkout-section">
+                <button onclick="checkout()">Proceed to Pay</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="index.js"></script>
+
+</html>
